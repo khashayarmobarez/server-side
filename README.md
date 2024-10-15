@@ -16,3 +16,5 @@ the page is generated at build time
 ### 2-ssr:
 
 server side rendering
+
+trying to keep up the github push
