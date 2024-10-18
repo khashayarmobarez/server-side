@@ -23,10 +23,15 @@ data fetching can be done in serverside in nextjs,
 
 ### 1-ssg:
 
-static side generation
+static side generation(ssg)
 the page is generated at build time
+
+getStaticProps:
 you should use `getStaticProps` component IN THE PAGE that you want to use the fetched date
 example at pages/index.js
+
+getStaticPaths:
+the `getStaticPaths` is used for setting the quantity of pages that needs to render in build for ssg pages, for exp when the path has and id
 
 ### 2-ssr:
 
