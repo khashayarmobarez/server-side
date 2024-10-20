@@ -33,6 +33,12 @@ example at pages/index.js
 getStaticPaths:
 the `getStaticPaths` is used for setting the quantity of pages that needs to render in build for ssg pages, for exp when the path has and id
 
+Fallback:
+
 ### 2-ssr:
 
 server side rendering
+
+## an important point about next:
+
+next will fetch the pages connected to Link tags when user hovers on them

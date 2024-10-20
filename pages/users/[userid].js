@@ -1,23 +1,21 @@
 
-export asyn function getStaticPaths() {
+export async function getStaticPaths() {
+
+  const res = await fetch(`https://jsonplaceholder.typicode.com/users`)
+  const data = await res.json()
+  const paths = data.map(user => ({
+    params : { userid: user.id.toString(),   }
+  }))
 
     return {
-        paths : [
-            { params: { userId: '1' } },
-            { params: { userId: '2' } },
-            { params: { userId: '3' } },
-            { params: { userId: '4' } },
-            { params: { userId: '5' } },
-            { params: { userId: '6' } },
-        ]
-        ,
+        paths,
         fallback: false,
     }
 }
 
 export async function getStaticProps(context) {
     const { params } = context
-    const res = await fetch(`https://jsonplaceholder.typicode.com/users`)
+    const res = await fetch(`https://jsonplaceholder.typicode.com/users/${params.userid}`)
     const data = await res.json()
 
     console.log(params)
@@ -30,6 +28,9 @@ export async function getStaticProps(context) {
 }
 
 function UserDetails({ data }) { 
+
+  console.log(data)
+
   return (
     <div>
       <h1>user details</h1>
