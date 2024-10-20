@@ -34,6 +34,7 @@ getStaticPaths:
 the `getStaticPaths` is used for setting the quantity of pages that needs to render in build for ssg pages, for exp when the path has and id
 
 Fallback:
+fallback -> false : when the pages are limited(for exp 10 pages)
 
 ### 2-ssr:
 
