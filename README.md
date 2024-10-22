@@ -34,7 +34,15 @@ getStaticPaths:
 the `getStaticPaths` is used for setting the quantity of pages that needs to render in build for ssg pages, for exp when the path has and id
 
 Fallback:
-fallback -> false : when the pages are limited(for exp 10 pages)
+fallback -> false :
+when the pages are limited(for exp 10 pages)
+
+fallback -> true :
+even when the pages are limited, user can still request more than the limit and it will still build the pages, even tho they were not built on the build.
+next wills start building the page when a user request it for the first time,this way the unused and unrequested pages will never be built
+
+fallback -> blocking :
+it creates the html straightly and skips sending json(like fallback true). it could be better for ux and seo to use
 
 ### 2-ssr:
 

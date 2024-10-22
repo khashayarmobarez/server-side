@@ -1,15 +1,20 @@
+import { useRouter } from 'next/router'
 
 export async function getStaticPaths() {
 
   const res = await fetch(`https://jsonplaceholder.typicode.com/users`)
   const data = await res.json()
-  const paths = data.map(user => ({
+  const usersData = data.slice(0,4)
+
+  const paths = usersData.map(user => ({
     params : { userid: user.id.toString(),   }
   }))
 
     return {
         paths,
-        fallback: false,
+        // fallback: false,
+        // fallback: true,
+        fallback: 'blocking',
     }
 }
 
@@ -20,6 +25,13 @@ export async function getStaticProps(context) {
 
     console.log(params)
 
+    // handling requests more than the availabe jsons 
+    if(!data.name) {
+      return {
+        notFound: true
+      }
+    }
+
     return {
         props: {
             data
@@ -29,7 +41,14 @@ export async function getStaticProps(context) {
 
 function UserDetails({ data }) { 
 
+  // const router = useRouter()
+
   console.log(data)
+
+  // fallback
+  // if (router.isFallback) {
+  //   return <h2>Fall back page!</h2>
+  // }
 
   return (
     <div>
