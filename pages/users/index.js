@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 export async function getStaticProps() {
+    console.log('regenerating users page!')
     const res = await fetch('https://jsonplaceholder.typicode.com/users')
     const data = await res.json();
     console.log(data)
@@ -8,7 +9,8 @@ export async function getStaticProps() {
     return {
         props: {
             users: data
-        }
+        },
+        revalidate: 10 // seconds
     }
 }
 

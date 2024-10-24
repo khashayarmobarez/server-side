@@ -44,6 +44,25 @@ next wills start building the page when a user request it for the first time,thi
 fallback -> blocking :
 it creates the html straightly and skips sending json(like fallback true). it could be better for ux and seo to use
 
+Isr: (incremental static regeneration)
+pages that update automaticaly based on the time that developer sets to keep the static generation site updated
+you can use isr with adding 'revalidate' to the getStaticProps.
+`return {
+        props: {
+            users: data
+        },
+        revalidate: 10 // seconds
+    }`
+isr doesn't regenerate the page until a user requests that page, it only makes the regeneration mandatory
+
+you can send user to notFound pages if in static generating pages it didn't exist
+`// handling requests more than the availabe jsons 
+    if(!data.name) {
+      return {
+        notFound: true
+      }
+    }`
+
 ### 2-ssr:
 
 server side rendering
