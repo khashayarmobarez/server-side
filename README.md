@@ -19,9 +19,9 @@ how to run:
 
 data fetching can be done in serverside in nextjs,
 
-## two models of pre rendering:
+# two models of pre rendering:
 
-### 1-ssg:
+## 1-ssg:
 
 static side generation(ssg)
 the page is generated at build time
@@ -44,7 +44,8 @@ next wills start building the page when a user request it for the first time,thi
 fallback -> blocking :
 it creates the html straightly and skips sending json(like fallback true). it could be better for ux and seo to use
 
-Isr: (incremental static regeneration)
+### Isr: (incremental static regeneration)
+
 pages that update automaticaly based on the time that developer sets to keep the static generation site updated
 you can use isr with adding 'revalidate' to the getStaticProps.
 `return {
@@ -63,10 +64,19 @@ you can send user to notFound pages if in static generating pages it didn't exis
       }
     }`
 
-### 2-ssr:
+### redirect in get static props:
 
-server side rendering
+`// redirect example usage
+    if(!data.name) {
+      return {
+        redirect: { destination: '/' }
+      }
+    }`
 
-## an important point about next:
+## 2-ssr:
+
+server side rendering, when the client requests, server handles the api request inside the server itself and then sends the ready to use page to the client
+
+### an important point about next:
 
 next will fetch the pages connected to Link tags when user hovers on them

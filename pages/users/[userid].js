@@ -28,7 +28,9 @@ export async function getStaticProps(context) {
     // handling requests more than the availabe jsons 
     if(!data.name) {
       return {
-        notFound: true
+        notFound: true,
+        // you can also redirect the user with below method
+        // redirect: { destination: '/' }
       }
     }
 
