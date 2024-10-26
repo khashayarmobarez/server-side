@@ -77,6 +77,23 @@ you can send user to notFound pages if in static generating pages it didn't exis
 
 server side rendering, when the client requests, server handles the api request inside the server itself and then sends the ready to use page to the client
 
+ssr implementation looks alot like ssg:
+
+`
+export async function getServerSideProps() {
+
+    const res = await fetch('https://jsonplaceholder.typicode.com/albums')
+    const data = await res.json()
+
+    return {
+        props: {
+            albums: data
+        }
+    }
+
+}
+`
+
 ### an important point about next:
 
 next will fetch the pages connected to Link tags when user hovers on them
