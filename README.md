@@ -77,7 +77,7 @@ you can send user to notFound pages if in static generating pages it didn't exis
 
 server side rendering, when the client requests, server handles the api request inside the server itself and then sends the ready to use page to the client
 
-ssr implementation looks alot like ssg:
+ssr implementation looks alot like ssg( under 13 version):
 
 `
 export async function getServerSideProps() {
