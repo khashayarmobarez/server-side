@@ -2,7 +2,7 @@
 
 const Albums = ({albums}) => {
 
-    console.log(albums)
+    // console.log(albums)
 
     return (
         <div>
@@ -15,10 +15,15 @@ const Albums = ({albums}) => {
 
 export default Albums;
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+
+    // req(request and response could be very useful)
+    const { params, req, res } = context;
     
-    const res = await fetch('https://jsonplaceholder.typicode.com/albums')
-    const data = await res.json()
+    console.log('generating albums page')
+    // used serve-json db in this file
+    const response = await fetch('https://localhost:3060/albums')
+    const data = await response.json()
     
     return {    
         props: {

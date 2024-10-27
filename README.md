@@ -79,8 +79,7 @@ server side rendering, when the client requests, server handles the api request 
 
 ssr implementation looks alot like ssg( under 13 version):
 
-`
-export async function getServerSideProps() {
+`export async function getServerSideProps() {
 
     const res = await fetch('https://jsonplaceholder.typicode.com/albums')
     const data = await res.json()
@@ -93,6 +92,27 @@ export async function getServerSideProps() {
 
 }
 `
+
+you can also use context to get params and other things in server Side Rendering(like static props)
+res and req are prompts used for the back, you can use them for writing api and ...
+req and res(request and response could be very useful)
+`export async function getServerSideProps(context) {
+
+    // req(request and response could be very useful)
+    const { params, req, res } = context;
+
+    console.log('generating albums page')
+    // used serve-json db in this file
+    const response = await fetch('https://localhost:3060/albums')
+    const data = await response.json()
+
+    return {
+        props: {
+            albums: data
+        }
+    }
+
+}`
 
 ### an important point about next:
 

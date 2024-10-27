@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint", 
-    "server-json": "json-server --watch db.json --port 3060"
+    "serve-json": "json-server --watch db.json --port 3060"
   },
   "dependencies": {
     "@next/font": "14.2.15",

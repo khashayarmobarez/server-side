@@ -4,7 +4,7 @@ export async function getStaticProps() {
     console.log('regenerating users page!')
     const res = await fetch('https://jsonplaceholder.typicode.com/users')
     const data = await res.json();
-    console.log(data)
+    // console.log(data)
 
     return {
         props: {
@@ -19,7 +19,7 @@ function Users({users}) {
     <div>
       <ul>
         {
-            users.map((user) => <li><Link href={`/users/${user.id}`}>{user.name}</Link></li>)
+            users.map((user) => <li key={user.id}><Link href={`/users/${user.id}`}>{user.name}</Link></li>)
         }
       </ul>
     </div>

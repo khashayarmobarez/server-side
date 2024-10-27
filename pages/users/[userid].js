@@ -23,7 +23,7 @@ export async function getStaticProps(context) {
     const res = await fetch(`https://jsonplaceholder.typicode.com/users/${params.userid}`)
     const data = await res.json()
 
-    console.log(params)
+    // console.log(params)
 
     // handling requests more than the availabe jsons 
     if(!data.name) {
@@ -45,7 +45,7 @@ function UserDetails({ data }) {
 
   // const router = useRouter()
 
-  console.log(data)
+  // console.log(data)
 
   // fallback
   // if (router.isFallback) {

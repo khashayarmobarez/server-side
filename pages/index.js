@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home({data}) {
 
   // the data is fetched in server side but here we can log it in client side(use it)
-  console.log(data)
+  // console.log(data)
 
   return (
     <div>
