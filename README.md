@@ -96,10 +96,11 @@ ssr implementation looks alot like ssg( under 13 version):
 you can also use context to get params and other things in server Side Rendering(like static props)
 res and req are prompts used for the back, you can use them for writing api and ...
 req and res(request and response could be very useful)
+you can extact the query from this section
 `export async function getServerSideProps(context) {
 
     // req(request and response could be very useful)
-    const { params, req, res } = context;
+    const { params, req, res, query } = context;
 
     console.log('generating albums page')
     // used serve-json db in this file
