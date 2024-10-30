@@ -115,6 +115,16 @@ you can extact the query from this section
 
 }`
 
-### an important point about next:
+### important points about next:
 
 next will fetch the pages connected to Link tags when user hovers on them
+
+states and useEffect only happens at the client side
+
+## swr
+
+swr constantly updates data(for example when you switch tabs it updates the data automatically)
+a better choice for data catching
+`const {data, error} = useSWR('http://localhost:3060/todos',
+        (url) => fetch(url).then((res) => res.json()) 
+    )`
