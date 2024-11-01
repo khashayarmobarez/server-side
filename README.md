@@ -128,3 +128,7 @@ a better choice for data catching
 `const {data, error} = useSWR('http://localhost:3060/todos',
         (url) => fetch(url).then((res) => res.json()) 
     )`
+
+### server side rendering with client side updating
+
+example in [toDoId].js file

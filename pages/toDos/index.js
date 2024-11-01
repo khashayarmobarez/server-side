@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 import useSWR from 'swr'
 
 const index = () => {
+
+    const router = useRouter()
 
     // const [toDos, setToDos] = useState([])
 
@@ -11,7 +14,7 @@ const index = () => {
     //     .then((data) => setToDos(data))
     // })
 
-    const {data, error} = useSWR('http://localhost:3060/todos',
+    const {data, error} = useSWR('https://jsonplaceholder.typicode.com/todos',
         (url) => fetch(url).then((res) => res.json()) 
     )
 
@@ -21,7 +24,7 @@ const index = () => {
         <div>
             {
                 data ?
-                    data.map((todo) => <h3 key={todo.id}>{todo.title}</h3>)
+                    data.map((todo) => <h3 onClick={() => router.push(`/toDos/${todo.id}`)} key={todo.id}>{todo.title}</h3>)
                     :
                     <p>loading</p>
             }
